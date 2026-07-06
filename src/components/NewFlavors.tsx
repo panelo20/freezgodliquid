@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { products } from "@/lib/data";
 
@@ -61,17 +62,26 @@ export default function NewFlavors() {
                       background: `radial-gradient(circle at 50% 80%, ${product.color}12, transparent 70%)`,
                     }}
                   >
-                    <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-3"
-                      style={{
-                        background: `${product.color}15`,
-                        border: `1px solid ${product.color}25`,
-                        boxShadow: `0 0 40px ${product.color}10`,
-                        transitionTimingFunction: "var(--ease-spring)",
-                      }}
-                    >
-                      <span className="text-2xl">❄</span>
-                    </div>
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-contain p-4 transition-all duration-700 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:rotate-3"
+                        style={{
+                          background: `${product.color}15`,
+                          border: `1px solid ${product.color}25`,
+                          boxShadow: `0 0 40px ${product.color}10`,
+                          transitionTimingFunction: "var(--ease-spring)",
+                        }}
+                      >
+                        <span className="text-2xl">❄</span>
+                      </div>
+                    )}
 
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"

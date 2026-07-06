@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
@@ -16,32 +17,6 @@ function StarRating({ count }: { count: number }) {
           ★
         </span>
       ))}
-    </div>
-  );
-}
-
-function BottlePlaceholder() {
-  return (
-    <div className="relative w-[180px] h-[340px] md:w-[220px] md:h-[420px]">
-      <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/[0.1] shadow-[0_0_120px_rgba(157,223,255,0.15)] overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white/10 to-transparent" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-          <div className="w-12 h-12 rounded-full bg-glow/20 border border-glow/30 flex items-center justify-center mb-4">
-            <span className="text-lg">❄</span>
-          </div>
-          <span className="font-heading text-2xl tracking-wider text-white/90">FREEZE</span>
-          <span className="font-heading text-2xl tracking-wider text-glow">GOD</span>
-          <div className="mt-3 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          <span className="mt-3 text-[10px] tracking-[0.3em] text-text-muted uppercase">
-            {heroProduct.name}
-          </span>
-          <span className="mt-1 text-[9px] tracking-[0.2em] text-text-muted/60 uppercase">
-            30ML
-          </span>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-glow/5 to-transparent" />
-      </div>
-      <div className="absolute -inset-8 rounded-full bg-glow/5 blur-3xl glow-pulse" />
     </div>
   );
 }
@@ -135,7 +110,16 @@ export default function Hero() {
         </div>
 
         <div ref={bottleRef} className="opacity-0 my-10 md:my-14 animate-float">
-          <BottlePlaceholder />
+          <div className="relative w-[180px] h-[340px] md:w-[220px] md:h-[420px]">
+            <Image
+              src={heroProduct.image}
+              alt={heroProduct.name}
+              fill
+              className="object-contain drop-shadow-[0_0_60px_rgba(157,223,255,0.3)]"
+              priority
+            />
+            <div className="absolute -inset-8 rounded-full bg-glow/5 blur-3xl glow-pulse" />
+          </div>
         </div>
 
         <div ref={detailsRef} className="opacity-0 flex flex-col items-center gap-3">

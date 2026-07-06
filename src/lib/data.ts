@@ -8,6 +8,7 @@ export interface Product {
   freshness: number;
   color: string;
   gradient: string;
+  image: string;
 }
 
 export const products: Product[] = [
@@ -21,6 +22,7 @@ export const products: Product[] = [
     freshness: 5,
     color: "#9DDFFF",
     gradient: "from-cyan-400/20 to-blue-600/20",
+    image: "/images/products/ice-mint.jpeg",
   },
   {
     id: "berry-freeze",
@@ -32,6 +34,7 @@ export const products: Product[] = [
     freshness: 4,
     color: "#C084FC",
     gradient: "from-purple-400/20 to-pink-600/20",
+    image: "/images/products/berry.jpeg",
   },
   {
     id: "grape-ice",
@@ -43,6 +46,7 @@ export const products: Product[] = [
     freshness: 3,
     color: "#A78BFA",
     gradient: "from-violet-400/20 to-purple-600/20",
+    image: "/images/products/grape.jpeg",
   },
   {
     id: "lemon-frost",
@@ -54,6 +58,7 @@ export const products: Product[] = [
     freshness: 5,
     color: "#FDE047",
     gradient: "from-yellow-400/20 to-lime-600/20",
+    image: "/images/products/lemon.jpeg",
   },
   {
     id: "blue-energy",
@@ -65,6 +70,7 @@ export const products: Product[] = [
     freshness: 4,
     color: "#60A5FA",
     gradient: "from-blue-400/20 to-indigo-600/20",
+    image: "/images/products/blue-energy.jpeg",
   },
   {
     id: "mint-blast",
@@ -76,6 +82,7 @@ export const products: Product[] = [
     freshness: 5,
     color: "#34D399",
     gradient: "from-emerald-400/20 to-teal-600/20",
+    image: "/images/products/mint-blast.jpeg",
   },
   {
     id: "watermelon-ice",
@@ -87,6 +94,7 @@ export const products: Product[] = [
     freshness: 4,
     color: "#FB7185",
     gradient: "from-rose-400/20 to-red-600/20",
+    image: "/images/products/watermelon.jpeg",
   },
   {
     id: "cola-freeze",
@@ -98,6 +106,7 @@ export const products: Product[] = [
     freshness: 3,
     color: "#F97316",
     gradient: "from-orange-400/20 to-amber-600/20",
+    image: "/images/products/cola.jpeg",
   },
 ];
 
@@ -137,25 +146,57 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-export const features = [
+export interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  tag: string;
+}
+
+export const features: Feature[] = [
   {
     icon: "❄",
     title: "Extreme Cooling",
-    description: "Sensasi dingin sampai tarikan terakhir.",
+    description: "Experience an intense cooling sensation engineered to stay consistent from the first puff to the last. Every inhale delivers a refreshing Arctic-style finish without overwhelming the flavor.",
+    bullets: [
+      "Long-lasting cooling effect",
+      "Balanced throat sensation",
+      "Smooth icy finish",
+    ],
+    tag: "Freeze Index ★★★★★",
   },
   {
     icon: "⚡",
     title: "Premium Flavor",
-    description: "Rasa lebih pekat dan bersih.",
+    description: "Crafted using carefully selected food-grade flavor concentrates for a cleaner, richer, and more natural taste profile. Every recipe is balanced to maximize flavor without excessive sweetness.",
+    bullets: [
+      "High-quality flavor concentrates",
+      "Rich and layered taste",
+      "Consistent flavor delivery",
+    ],
+    tag: "Premium Blend",
   },
   {
-    icon: "💨",
+    icon: "☁",
     title: "Smooth Clouds",
-    description: "Asap tebal tanpa harsh.",
+    description: "Optimized VG/PG ratio provides dense, silky clouds while maintaining a smooth inhale. Designed to reduce harshness and improve overall vaping comfort.",
+    bullets: [
+      "Thick vapor production",
+      "Smooth throat hit",
+      "Stable performance",
+    ],
+    tag: "Cloud Optimized",
   },
   {
     icon: "🧊",
     title: "Imported Ingredients",
-    description: "Food Grade Premium.",
+    description: "Made with premium imported ingredients sourced from trusted international suppliers. Every batch is produced with strict quality standards to ensure purity, consistency, and reliability.",
+    bullets: [
+      "Food-grade ingredients",
+      "International quality standards",
+      "Consistent batch control",
+    ],
+    tag: "Premium Quality",
   },
 ];

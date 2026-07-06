@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { products } from "@/lib/data";
 
@@ -27,23 +28,34 @@ export default function FloatingPreview() {
               style={{ transitionTimingFunction: "var(--ease-spring)" }}
             >
               <div
-                className="w-[72px] h-[96px] rounded-[calc(1.25rem-4px)] flex flex-col items-center justify-center gap-1 shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)] transition-transform duration-700 group-hover:scale-[1.02] group-hover:rotate-[2deg]"
+                className="w-[72px] h-[96px] rounded-[calc(1.25rem-4px)] relative overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)] transition-transform duration-700 group-hover:scale-[1.02] group-hover:rotate-[2deg]"
                 style={{
                   background: `linear-gradient(135deg, ${product.color}15, ${product.color}05)`,
                   transitionTimingFunction: "var(--ease-spring)",
                 }}
               >
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] transition-all duration-500 group-hover:scale-110"
-                  style={{
-                    background: `${product.color}20`,
-                    border: `1px solid ${product.color}30`,
-                    transitionTimingFunction: "var(--ease-spring)",
-                  }}
-                >
-                  ❄
-                </div>
-                <span className="text-[9px] tracking-[0.15em] text-white/70 uppercase font-medium">
+                {product.image ? (
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-contain p-1.5"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+                    <div
+                      className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] transition-all duration-500 group-hover:scale-110"
+                      style={{
+                        background: `${product.color}20`,
+                        border: `1px solid ${product.color}30`,
+                        transitionTimingFunction: "var(--ease-spring)",
+                      }}
+                    >
+                      ❄
+                    </div>
+                  </div>
+                )}
+                <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.15em] text-white/70 uppercase font-medium drop-shadow-lg">
                   {product.name.split(" ")[0]}
                 </span>
               </div>
